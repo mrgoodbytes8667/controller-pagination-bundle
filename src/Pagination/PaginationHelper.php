@@ -34,6 +34,20 @@ class PaginationHelper
     }
 
     /**
+     * @param PaginationPageType[] $pageTypes
+     * @param string|null $route
+     * @param array $parameters
+     * @return $this
+     */
+    public function addTraversals(array $pageTypes, ?string $route = null, array $parameters = []): self
+    {
+        foreach ($pageTypes as $pageType) {
+            $this->addTraversal($pageType, $this->replaceRoute($route), $parameters);
+        }
+        return $this;
+    }
+
+    /**
      * @param PaginationPageType $pageType
      * @param string|null $route
      * @param array $parameters
@@ -102,20 +116,6 @@ class PaginationHelper
             $this->pages->set($page->getIndex(), $page);
         }
 
-        return $this;
-    }
-
-    /**
-     * @param PaginationPageType[] $pageTypes
-     * @param string|null $route
-     * @param array $parameters
-     * @return $this
-     */
-    public function addTraversals(array $pageTypes, ?string $route = null, array $parameters = []): self
-    {
-        foreach ($pageTypes as $pageType) {
-            $this->addTraversal($pageType, $this->replaceRoute($route), $parameters);
-        }
         return $this;
     }
 
@@ -453,6 +453,30 @@ class PaginationHelper
     {
         $this->request = $request;
         return $this;
+    }
+
+    /**
+     * @param int $beginOffset
+     */
+    public function setBeginOffset(int $beginOffset): void
+    {
+        $this->beginOffset = $beginOffset;
+    }
+
+    /**
+     * @param int $endOffset
+     */
+    public function setEndOffset(int $endOffset): void
+    {
+        $this->endOffset = $endOffset;
+    }
+
+    /**
+     * @param int $currentOffset
+     */
+    public function setCurrentOffset(int $currentOffset): void
+    {
+        $this->currentOffset = $currentOffset;
     }
 
     /**
