@@ -15,7 +15,7 @@ return static function (ContainerConfigurator $container) {
     $services->set('bytes_controller_pagination.pagination', PaginationHelper::class)
         ->args([
             service('router.default'),
-            0,  // $beginOffset
+            0,  // $startOffset
             0,  // $endOffset
             0,  // $currentOffset
             [], // $parameterAllowlist

@@ -25,6 +25,11 @@ class Configuration implements ConfigurationInterface
                         ->integerNode('begin')
                             ->min(1)
                             ->defaultValue(1)
+                            ->setDeprecated('mrgoodbytes8667/controller-pagination-bundle', '0.2.0', 'The child node "%node%" at path "%path%" is deprecated. It has been replaced by "start".')
+                        ->end()
+                        ->integerNode('start')
+                            ->min(1)
+                            //->defaultValue(1)
                         ->end()
                         ->integerNode('end')
                             ->min(1)
@@ -36,8 +41,12 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end() // end children (offset)
                 ->end() // end offset
+                ->arrayNode('parameters_allowlist')
+                    ->scalarPrototype()->end()
+                ->end() // end parameter allowlist
                 ->arrayNode('parameter_allowlist')
                     ->scalarPrototype()->end()
+                    ->setDeprecated('mrgoodbytes8667/controller-pagination-bundle', '0.2.0', 'The child node "%node%" at path "%path%" is deprecated. It has been replaced by "parameters_allowlist".')
                 ->end() // end parameter allowlist
             ->end();
 

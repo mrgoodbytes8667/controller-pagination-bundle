@@ -6,6 +6,7 @@ use Bytes\ControllerPaginationBundle\Enums\PaginationPageType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
+use JetBrains\PhpStorm\Deprecated;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
@@ -23,12 +24,12 @@ class PaginationHelper
 
     /**
      * @param UrlGeneratorInterface $urlGenerator
-     * @param int $beginOffset
+     * @param int $startOffset
      * @param int $endOffset
      * @param int $currentOffset
-     * @param array $parameterAllowlist
+     * @param array $parametersAllowlist
      */
-    public function __construct(private UrlGeneratorInterface $urlGenerator, private int $beginOffset = 1, private int $endOffset = 1, private int $currentOffset = 1, private array $parameterAllowlist = [])
+    public function __construct(private UrlGeneratorInterface $urlGenerator, private int $startOffset = 1, private int $endOffset = 1, private int $currentOffset = 1, private array $parametersAllowlist = [])
     {
         $this->pages = new ArrayCollection();
     }
@@ -97,9 +98,9 @@ class PaginationHelper
     private function filterParams(array $params): array
     {
         $params = Arr::except($this->request->query->all(), ['page']);
-        if (!empty($this->parameterAllowlist)) {
+        if (!empty($this->parametersAllowlist)) {
             $params = Arr::where($params, function ($value, $key) {
-                return in_array($key, $this->parameterAllowlist);
+                return in_array($key, $this->parametersAllowlist);
             });
         }
 
@@ -258,15 +259,15 @@ class PaginationHelper
 
     /**
      * @param int $currentPage
-     * @param int|null $beginOffset
+     * @param int|null $startOffset
      * @param int|null $endOffset
      * @param int|null $currentOffset
      * @return Page[]
      */
-    public function getPages(int $currentPage, ?int $beginOffset = null, ?int $endOffset = null, ?int $currentOffset = null): array
+    public function getPages(int $currentPage, ?int $startOffset = null, ?int $endOffset = null, ?int $currentOffset = null): array
     {
         $this->setCurrentPage($currentPage);
-        $this->populatePlaceholders($currentPage, $beginOffset, $endOffset, $currentOffset);
+        $this->populatePlaceholders($currentPage, $startOffset, $endOffset, $currentOffset);
 
         return $this->sortPages($this->pages);
     }
@@ -357,24 +358,24 @@ class PaginationHelper
 
     /**
      * @param int $currentPage
-     * @param int|null $beginOffset
+     * @param int|null $startOffset
      * @param int|null $endOffset
      * @param int|null $currentOffset
      * @return $this
      */
-    public function populatePlaceholders(int $currentPage, ?int $beginOffset = null, ?int $endOffset = null, ?int $currentOffset = null): self
+    public function populatePlaceholders(int $currentPage, ?int $startOffset = null, ?int $endOffset = null, ?int $currentOffset = null): self
     {
-        $beginOffset ??= $this->beginOffset;
+        $startOffset ??= $this->startOffset;
         $endOffset ??= $this->endOffset;
         $currentOffset ??= $this->currentOffset;
 
         //$this->rebuildSorted();
 
-        $beginToCurrentStart = 1 + $beginOffset + 1;
-        $beginToCurrentEnd = $currentPage - $currentOffset - 1;
+        $startToCurrentStart = 1 + $startOffset + 1;
+        $startToCurrentEnd = $currentPage - $currentOffset - 1;
 
-        if ($beginToCurrentEnd - $beginToCurrentStart >= 1) {
-            $this->createPlaceholder($beginToCurrentStart, $beginToCurrentEnd);
+        if ($startToCurrentEnd - $startToCurrentStart >= 1) {
+            $this->createPlaceholder($startToCurrentStart, $startToCurrentEnd);
         }
 
         $currentToEndStart = $currentPage + $currentOffset + 1;
@@ -439,9 +440,19 @@ class PaginationHelper
      * @param string[] $parameterAllowlist
      * @return $this
      */
+    #[Deprecated('since 0.2.0, replace with setParametersAllowlist().', '%class%->setParametersAllowlist(%parameter0%)')]
     public function setParameterAllowlist(array $parameterAllowlist): self
     {
-        $this->parameterAllowlist = $parameterAllowlist;
+        return $this->setParametersAllowlist($parameterAllowlist);
+    }
+
+    /**
+     * @param string[] $parametersAllowlist
+     * @return $this
+     */
+    public function setParametersAllowlist(array $parametersAllowlist): self
+    {
+        $this->parametersAllowlist = $parametersAllowlist;
         return $this;
     }
 
@@ -456,11 +467,11 @@ class PaginationHelper
     }
 
     /**
-     * @param int $beginOffset
+     * @param int $startOffset
      */
-    public function setBeginOffset(int $beginOffset): void
+    public function setStartOffset(int $startOffset): void
     {
-        $this->beginOffset = $beginOffset;
+        $this->startOffset = $startOffset;
     }
 
     /**
