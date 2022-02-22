@@ -17,17 +17,6 @@ enum PaginationPageType: string implements StringBackedEnumInterface
     case PAGE = 'page';
 
     /**
-     * @return string
-     */
-    public function getIcon(): string
-    {
-        return match ($this) {
-            PaginationPageType::PAGE => '',
-            default => $this->value,
-        };
-    }
-
-    /**
      * @return PaginationPageType[]
      */
     public static function getTraversalTypes(): array
@@ -41,16 +30,30 @@ enum PaginationPageType: string implements StringBackedEnumInterface
     }
 
     /**
+     * @return string
+     */
+    public function getIcon(): string
+    {
+        return match ($this) {
+            PaginationPageType::PAGE => '',
+            default => $this->value,
+        };
+    }
+
+    /**
      * @return bool
      */
-    public function isTraversalType(): bool {
+    public function isTraversalType(): bool
+    {
         return match ($this) {
             PaginationPageType::FIRST, PaginationPageType::LAST, PaginationPageType::PREV, PaginationPageType::NEXT => true,
             default => false,
         };
     }
 
-
+    /**
+     * @return string
+     */
     public function getIndex(): string
     {
         return match ($this) {
