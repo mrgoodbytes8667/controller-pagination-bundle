@@ -28,6 +28,19 @@ enum PaginationPageType: string implements StringBackedEnumInterface
     }
 
     /**
+     * @return PaginationPageType[]
+     */
+    public static function getTraversalTypes(): array
+    {
+        return [
+            PaginationPageType::FIRST,
+            PaginationPageType::LAST,
+            PaginationPageType::PREV,
+            PaginationPageType::NEXT
+        ];
+    }
+
+    /**
      * @return bool
      */
     public function isTraversalType(): bool {

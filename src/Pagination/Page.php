@@ -66,6 +66,7 @@ class Page
     /**
      * @param PaginationPageType $pageType
      * @param string|null $route
+     * @param array $parameters
      * @param UrlGeneratorInterface|null $urlGenerator
      * @return static
      */
@@ -331,5 +332,13 @@ class Page
         }
 
         return $this->urlGenerator->generate($this->route, $this->parameters);
+    }
+
+    /**
+     * @return UrlGeneratorInterface|null
+     */
+    public function getUrlGenerator(): ?UrlGeneratorInterface
+    {
+        return $this->urlGenerator;
     }
 }
