@@ -437,16 +437,6 @@ class PaginationHelper
     }
 
     /**
-     * @param string[] $parameterAllowlist
-     * @return $this
-     */
-    #[Deprecated('since 0.2.0, replace with setParametersAllowlist().', '%class%->setParametersAllowlist(%parameter0%)')]
-    public function setParameterAllowlist(array $parameterAllowlist): self
-    {
-        return $this->setParametersAllowlist($parameterAllowlist);
-    }
-
-    /**
      * @param string[] $parametersAllowlist
      * @return $this
      */
