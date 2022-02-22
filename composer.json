@@ -1,0 +1,43 @@
+{
+    "name": "mrgoodbytes8667/controller-pagination-bundle",
+    "type": "symfony-bundle",
+    "description": "Bootstrap 5.0 pagination helper",
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "doctrine/collections": "^1.6.7",
+        "illuminate/collections": "^8.0 | ^9.0 | ^10.0",
+        "mrgoodbytes8667/enum-serializer-bundle": "^2.0",
+        "sensio/framework-extra-bundle": "^5.1 | ^6.0",
+        "symfony/validator": "^5.4 | ^6.0"
+    },
+    "require-dev": {
+        "mrgoodbytes8667/test-common": ">=0.0.25",
+        "mrgoodbytes8667/test-common-faker": "^0.3.4",
+        "symfony/test-pack": "^1.0.8",
+        "symfony/var-dumper": "^5.4 | ^6.0"
+    },
+    "authors": [
+        {
+            "name": "MrGoodBytes",
+            "email": "bytes@goodbytes.live"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Bytes\\ControllerPaginationBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bytes\\ControllerPaginationBundle\\Tests\\": "Tests/"
+        }
+    },
+    "minimum-stability": "dev"
+}

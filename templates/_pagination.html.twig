@@ -1,0 +1,4 @@
+{# admin_tag/_pagination-link.html.twig #}
+<li class="page-item {%- if i.currentPage %} active{%- endif -%} {%- if not i.active %} disabled{%- endif -%}" {%- if i.currentPage %} aria-current="page"{%- endif -%}>
+    <a class="page-link" href="{{ i.url }}">{{ i.iconHtmlOrPageNumber|raw }}</a>
+</li>
