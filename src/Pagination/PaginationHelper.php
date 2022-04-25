@@ -8,6 +8,7 @@ use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use JetBrains\PhpStorm\Deprecated;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PaginationHelper
@@ -281,6 +282,9 @@ class PaginationHelper
         $this->resetCurrent();
         if (!($number instanceof Page)) {
             $number = $this->getPage($number);
+        }
+        if(empty($number)) {
+            throw new NotFoundHttpException('The specified page is not valid');
         }
         $page = $number->setCurrentPage();
         $this->calculateTraversalProperties();
