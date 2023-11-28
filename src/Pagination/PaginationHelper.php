@@ -6,7 +6,6 @@ use Bytes\ControllerPaginationBundle\Enums\PaginationPageType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
-use JetBrains\PhpStorm\Deprecated;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -123,7 +122,6 @@ class PaginationHelper
 
     /**
      * @param UrlGeneratorInterface $urlGenerator
-     * @required
      */
     public function setUrlGenerator(UrlGeneratorInterface $urlGenerator): void
     {
