@@ -10,7 +10,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mrgoodbytes8667/controller-pagination-bundle/release.yml?label=stable&logo=github&logoColor=FFF&style=flat)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mrgoodbytes8667/controller-pagination-bundle/run-tests.yml?logo=github&logoColor=FFF&style=flat)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mrgoodbytes8667/controller-pagination-bundle/run-tests-by-version.yml?logo=github&logoColor=FFF&style=flat)
-[![codecov](https://img.shields.io/codecov/c/github/mrgoodbytes8667/controller-pagination-bundle/0.3?logo=codecov&logoColor=FFF&style=flat)](https://codecov.io/gh/mrgoodbytes8667/controller-pagination-bundle)  
+[![codecov](https://img.shields.io/codecov/c/github/mrgoodbytes8667/controller-pagination-bundle/0.4?logo=codecov&logoColor=FFF&style=flat)](https://codecov.io/gh/mrgoodbytes8667/controller-pagination-bundle)  
 Bootstrap 5.0 pagination helper
 
 ## Installation
