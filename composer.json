@@ -12,7 +12,7 @@
     },
     "require-dev": {
         "mrgoodbytes8667/test-common": ">=0.0.25",
-        "mrgoodbytes8667/test-common-faker": "^0.3.4",
+        "mrgoodbytes8667/test-common-faker": "^0.3.4 | ^0.4 | ^0.5",
         "symfony/test-pack": "^1.0.8",
         "symfony/var-dumper": "^6.2 | ^7.0"
     },
