@@ -8,13 +8,13 @@
         "doctrine/collections": "^1.6.7 | ^2.0",
         "illuminate/collections": "^8.0 | ^9.0 | ^10.0 | ^11.0 | ^12.0",
         "mrgoodbytes8667/enum-serializer-bundle": "^2.0 | ^3.0 | ^4.0 | ^5.0 | ^6.0 | ^7.0 | ^8.0",
-        "symfony/validator": "^6.2 | ^7.0"
+        "symfony/validator": "^6.2 | ^7.0 | ^8.0"
     },
     "require-dev": {
         "mrgoodbytes8667/test-common": ">=0.0.25",
         "mrgoodbytes8667/test-common-faker": "^0.3.4 | ^0.4 | ^0.5",
         "symfony/test-pack": "^1.0.8",
-        "symfony/var-dumper": "^6.2 | ^7.0"
+        "symfony/var-dumper": "^6.2 | ^7.0 | ^8.0"
     },
     "authors": [
         {
