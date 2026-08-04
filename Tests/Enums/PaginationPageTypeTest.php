@@ -19,7 +19,8 @@ class PaginationPageTypeTest extends TestCase
      */
     public function testGetIcon(PaginationPageType $pageType)
     {
-        $this->assertEquals($pageType->value, $pageType->getIcon());
+        $this->assertNotEmpty($pageType->getIcon());
+        $this->assertStringStartsWith('fa7-solid:', $pageType->getIcon());
     }
 
     /**

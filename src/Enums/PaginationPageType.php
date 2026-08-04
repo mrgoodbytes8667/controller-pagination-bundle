@@ -9,11 +9,11 @@ enum PaginationPageType: string implements StringBackedEnumInterface
 {
     use StringBackedEnumTrait;
 
-    case FIRST = 'fa-solid fa-angles-left';
-    case LAST = 'fa-solid fa-angles-right';
-    case PREV = 'fa-solid fa-angle-left';
-    case NEXT = 'fa-solid fa-angle-right';
-    case PLACEHOLDER = 'fa-solid fa-ellipsis';
+    case FIRST = 'first';
+    case LAST = 'last';
+    case PREV = 'prev';
+    case NEXT = 'next';
+    case PLACEHOLDER = 'placeholder';
     case PAGE = 'page';
 
     /**
@@ -36,7 +36,9 @@ enum PaginationPageType: string implements StringBackedEnumInterface
     {
         return match ($this) {
             PaginationPageType::PAGE => '',
-            default => $this->value,
+            PaginationPageType::FIRST, PaginationPageType::PREV => 'fa7-solid:arrow-left',
+            PaginationPageType::LAST, PaginationPageType::NEXT => 'fa7-solid:arrow-right',
+            PaginationPageType::PLACEHOLDER => 'fa7-solid:ellipsis',
         };
     }
 

@@ -167,6 +167,12 @@ class PageTest extends TestCase
         $this->assertEquals('#', $page->getUrl());
     }
 
+    public function testGetIconOrPageNumber(): void
+    {
+        $this->assertSame('1', Page::createPage(1, 'route')->getIconOrPageNumber());
+        $this->assertSame('fa7-solid:arrow-left', Page::createTraversal(PaginationPageType::PREV)->getIconOrPageNumber());
+    }
+
     /**
      * @return Page
      */

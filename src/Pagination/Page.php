@@ -280,18 +280,6 @@ class Page
     }
 
     /**
-     * @return string
-     */
-    public function getIconHtmlOrPageNumber(): string
-    {
-        if ($this->pageType === PaginationPageType::PAGE) {
-            return $this->number;
-        } else {
-            return sprintf('<i class="%s"></i>', $this->pageType->getIcon());
-        }
-    }
-
-    /**
      * @return bool
      */
     public function isActive(): bool

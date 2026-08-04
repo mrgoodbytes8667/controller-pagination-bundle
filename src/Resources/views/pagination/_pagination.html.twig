@@ -1,4 +1,12 @@
 {# @BytesControllerPagination/pagination/_pagination.html.twig #}
 <li class="page-item {%- if i.currentPage %} active{%- endif -%} {%- if not i.active %} disabled{%- endif -%}" {%- if i.currentPage %} aria-current="page"{%- endif -%}>
-    <a class="page-link" href="{{ i.url }}">{{ i.iconHtmlOrPageNumber|raw }}</a>
+    <a class="page-link" href="{{ i.url }}">
+        {% if i.pageType.value == 'page' %}
+            {{ i.number }}
+        {% elseif i.pageType.value == 'placeholder' %}
+            &hellip;
+        {% else %}
+            {{ ux_icon(i.iconOrPageNumber) }}
+        {% endif %}
+    </a>
 </li>
